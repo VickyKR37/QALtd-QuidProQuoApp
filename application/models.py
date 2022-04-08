@@ -30,13 +30,12 @@ class Loans(db.Model):
         return 'Choose {}'.format(self.lender_id)
 
 class AddProfile(FlaskForm):
-    user_id = IntegerField('User ID')
     user_name = StringField('User Name')
     password = StringField('Password')
     property = IntegerField('Value of Property')
     cash = IntegerField('Value of Cash')
     investments = IntegerField('Value of Investmensts')
-    loan = IntegerField('Loan amount')
+    loans = IntegerField('Loan amount')
     submit = SubmitField('Submit')
 
 
