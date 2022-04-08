@@ -1,0 +1,1 @@
+export DATABASE_URI=mysql+pymysql://root:Groovy123@35.230.151.181:3306/qa-project-1

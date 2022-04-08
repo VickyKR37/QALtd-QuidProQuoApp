@@ -1,0 +1,28 @@
+{% extends 'base.html'%}
+
+{% block title %}
+<title>QuidProQuo - Update Your Profile</title>
+{% endblock %}
+<br>
+{% block body %}
+<div>
+<h1>Update Your Profile</h1>
+<div>
+    <form method='POST' action=''>
+        {{ form.hidden_tag() }}
+        {{ form.user_id.label }}
+        {{ form.user_id }}
+        {{ form.property.label}}
+        {{ form.property }}
+        <br>
+        {{ form.cash.label}}
+        {{ form.cash }}
+        <br>
+        {{ form.investments.label }}
+        {{ form.investments }}
+        <br>
+        {{ form.submit }}
+    </form> 
+</div>
+</div>
+{% endblock %}

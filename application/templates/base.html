@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block title %}
+        <title>QuidProQuo</title>
+        {% endblock %}
+    </head>
+
+    <body>
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <br>
+                <li><a href="/add_profile"> Create Profile and Enter Information About Aseets</a></a></li>
+                <br>
+                <li><a href='/add_debt'>Enter Debt Info</a></li>
+            </ul>
+        </nav>
+        
+        {% block body %} {% endblock%}
+    </body>
+
+</html>

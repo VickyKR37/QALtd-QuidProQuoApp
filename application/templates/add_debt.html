@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>QuidProQuo - Add the Details of Your Debt</title>
+{% endblock %}
+<br>
+{% block body %}
+<div>
+<h1>Add Details of Your Debt</h1>
+
+<div>
+    <form method='POST' action=''>
+        {{ form.hidden_tag() }}
+        {{ form.user_id.label}}
+        {{ form.user_id }}
+        <br>
+        {{ form.lender_id.label}}
+        {{ form.lender_id }}
+        <br>
+        {{ form.amount_borrowed.label }}
+        {{ form.amount_borrowed }}
+        <br>
+        {{ form.submit }}
+    </form> 
+</div>
+</div>
+{% endblock %}
