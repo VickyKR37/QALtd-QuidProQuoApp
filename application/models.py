@@ -11,7 +11,7 @@ bcrypt = Bcrypt(app)
 class Users(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(15), unique=True)
-    loans = db.relationship('Loans', backref='user')
+    loans = db.relationship('Loans', backref='user', uselist=False)
     password = db.Column(db.String(15), nullable=False)
     property = db.Column(db.Integer)
     cash = db.Column(db.Integer)
