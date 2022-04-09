@@ -1,8 +1,6 @@
+from application.models import Users
 from flask_testing import TestCase
-from application.models import Users 
 from application import app, db
-from flask import render_template, redirect, url_for, request
-
 
 class TestBase(TestCase):
 
@@ -15,12 +13,8 @@ class TestBase(TestCase):
 
         test_User = Users(user_name="Vicky_Jones", loans=1000, password="Groovy123", property=1000000, cash=500000, investments=200000)
 
-        db.session.add(test_User)
-        db.session.commit()
-
     def tearDown(self):
-        db.session.remove()
-        db.drop_all()
+        pass
 
     
 class TestViews(TestBase):
@@ -33,25 +27,25 @@ class TestViews(TestBase):
         response = self.client.get(url_for('add_profile'))
         self.assertEqual(response.status_code, 200)
 
-    def test_add_profile(self):
+    def test_add_debt(self):
         response = self.client.get(url_for('add_debt'))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
-    def test_add_profile(self):
-        response = self.client.get(url_for('update_profile', 1))
+    def test_update_profile(self):
+        response = self.client.get(url_for('update_profile'))
         self.assertEqual(response.status_code, 302)
 
 
-    def test_add_profile(self):
-        response = self.client.get(url_for('update_debt', 1))
+    def test_update_debt(self):
+        response = self.client.get(url_for('update_debt'))
         self.assertEqual(response.status_code, 302)
 
-    def test_add_profile(self):
-        response = self.client.get(url_for('view_networth', 1))
+    def test_view_networth(self):
+        response = self.client.get(url_for('view_networth'))
         self.assertEqual(response.status_code, 302)    
 
-    def test_add_profile(self):
-        response = self.client.get(url_for('delete_profile', 1))
+    def test_delete_profile(self):
+        response = self.client.get(url_for('delete_profile'))
         self.assertEqual(response.status_code, 302)
 
 

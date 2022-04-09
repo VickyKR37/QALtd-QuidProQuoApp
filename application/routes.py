@@ -11,18 +11,17 @@ def home():
 @app.route('/add_profile', methods=['GET', 'POST'])
 def add_profile():
     form = AddProfile()
-    if request.method == 'POST': 
-        if form.validate_on_submit():
-            new_profile = Users(user_name=form.user_name.data, password=form.password.data, loans=form.loans.data, 
-            property=form.property.data, cash=form.cash.data, investments=form.investments.data)
-            db.session.add(new_profile)
-            db.session.commit()
-            return render_template('index.html', message="You have created your profile!")
+    if form.validate_on_submit():
+        new_profile = Users(user_name=form.user_name.data, password=form.password.data, 
+        property=form.property.data, cash=form.cash.data, investments=form.investments.data)
+        db.session.add(new_profile)
+        db.session.commit()
+        return render_template('index.html', message="You have created your profile!")
     else:
         return render_template('add_profile.html', message="Try again", form=form)
 
 
-@app.route('/add_debt', methods=['GET', 'POST'])
+@app.route('/add_debt', methods=[ 'GET', 'POST'])
 def add_debt():
     form = AddDebtDetails()
     if form.validate_on_submit():
