@@ -35,7 +35,7 @@ class AddProfile(FlaskForm):
     property = IntegerField('Value of Property')
     cash = IntegerField('Value of Cash')
     investments = IntegerField('Value of Investmensts')
-    loans = IntegerField('Loan amount')
+    loans_total = IntegerField('Loan amount')
     submit = SubmitField('Submit')
 
 
@@ -49,7 +49,7 @@ class AddDebtDetails(FlaskForm):
         ('lloyds', 'Lloyds'), 
         ('metro', 'Metro'), 
         ('natwest', 'Natwest')])
-    amount_borrowed = IntegerField('Amount Owed')
+    loans = IntegerField('Amount Owed')
     submit = SubmitField('Sumbit')
 
 
