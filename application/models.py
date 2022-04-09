@@ -23,7 +23,7 @@ class Users(db.Model):
 class Loans(db.Model):
     loan_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    loans = db.relationship('Users', backref='loans', uselist=False)
+    loans = db.relationship('Users', backref='loans', overlaps="loans_total,user", uselist=False)
     lender_id = db.Column(db.String(20))
 
     def __repr__(self):
