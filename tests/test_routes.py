@@ -2,6 +2,7 @@ from application.models import Users, Loans
 from flask_testing import TestCase
 from application import app, db
 from flask import url_for
+from flask_testing import LiveServerTestCase
 
 class TestBase(TestCase):
 
@@ -60,7 +61,7 @@ class TestViews(TestBase):
         self.assertEqual(response.status_code, 302)
 
 
+class TestData(TestBase):
 
-
-
+    
 
