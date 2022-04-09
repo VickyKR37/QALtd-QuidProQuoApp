@@ -16,9 +16,9 @@ def add_profile():
         property=form.property.data, cash=form.cash.data, investments=form.investments.data)
         db.session.add(new_profile)
         db.session.commit()
-        return render_template('index.html', message="You have created your profile!")
+        return render_template('index.html')
     else:
-        return render_template('add_profile.html', message="Try again", form=form)
+        return render_template('add_profile.html', form=form)
 
 
 @app.route('/add_debt', methods=[ 'GET', 'POST'])
@@ -28,9 +28,9 @@ def add_debt():
         added_debt = Loans(user_id=form.user_id.data, lender_id=form.lender_id.data, loans=form.loans.data)
         db.session.add(added_debt)
         db.session.commit()
-        return render_template('index.html', message="Details of debt added!")
+        return render_template('index.html')
     else:
-        return render_template('add_debt.html', message="Try again", form=form)
+        return render_template('add_debt.html', form=form)
 
 
 
@@ -47,7 +47,7 @@ def update_profile(user_id):
             if form.investments.data: 
                 updated_profile.investments = form.investments.data
             db.session.commit()
-            return render_template('index.html', message="You updated the value of your assets!")
+            return render_template('index.html')
     else:
         return render_template('update_profile.html', form=form)
 
@@ -65,7 +65,7 @@ def update_debt(user_id):
             if form.amount_borrowed.data:
                 updated_debt.loans = form.loans.data
             db.session.commit()
-            return render_template('index.html', message="Details of debt updated!")
+            return render_template('index.html')
     else:
         return render_template('update_debt.html', form=form)
 
