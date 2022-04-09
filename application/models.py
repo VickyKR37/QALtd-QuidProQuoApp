@@ -11,7 +11,7 @@ bcrypt = Bcrypt(app)
 class Users(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(15), unique=True)
-    loans = db.relationship('Loans', backref='user', uselist=False)
+    loans_total = db.relationship('Loans', backref='user', uselist=False)
     password = db.Column(db.String(15), nullable=False)
     property = db.Column(db.Integer)
     cash = db.Column(db.Integer)
@@ -23,7 +23,7 @@ class Users(db.Model):
 class Loans(db.Model):
     loan_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
-    amount_borrowed = db.Column(db.Integer, db.ForeignKey('users.loans'))
+    loans = db.relationship('Users', backref='loans', uselist=False)
     lender_id = db.Column(db.String(20))
 
     def __repr__(self):

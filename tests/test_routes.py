@@ -14,7 +14,7 @@ class TestBase(TestCase):
     def setUp(self):
         db.create_all()
 
-        test_User = Users(user_name="Vicky_Jones", password="Groovy123", loans=1000, property=1000000, cash=500000, investments=200000)
+        test_User = Users(user_name="Vicky_Jones", password="Groovy123", property=1000000, cash=500000, investments=200000)
 
     def tearDown(self):
         pass

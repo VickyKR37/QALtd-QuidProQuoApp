@@ -12,7 +12,7 @@ def home():
 def add_profile():
     form = AddProfile()
     if form.validate_on_submit():
-        new_profile = Users(user_name=form.user_name.data, password=form.password.data, 
+        new_profile = Users(user_name=form.user_name.data, password=form.password.data, loans_total=form.loans_total.data,
         property=form.property.data, cash=form.cash.data, investments=form.investments.data)
         db.session.add(new_profile)
         db.session.commit()
@@ -25,7 +25,7 @@ def add_profile():
 def add_debt():
     form = AddDebtDetails()
     if form.validate_on_submit():
-        added_debt = Loans(user_id=form.user_id.data, lender_id=form.lender_id.data, amount_borrowed=form.amount_borrowed.data)
+        added_debt = Loans(user_id=form.user_id.data, lender_id=form.lender_id.data, loans=form.loans.data)
         db.session.add(added_debt)
         db.session.commit()
         return render_template('index.html', message="Details of debt added!")
@@ -63,7 +63,7 @@ def update_debt(user_id):
             if form.lender_id.data:
                 updated_debt.lender_id = form.lender_id.data
             if form.amount_borrowed.data:
-                updated_debt.amount_borrowed = form.amount_borrowed.data
+                updated_debt.loans = form.loans.data
             db.session.commit()
             return render_template('index.html', message="Details of debt updated!")
     else:
@@ -76,7 +76,7 @@ def view_networth(user_id):
     form1 = Users.query.filter_by(user_id=user_id).first()
     form2 = Loans.query.filter_by(user_id=user_id).first()
     assets = form1.cash + form1.investments + form1.property
-    debt = form2.amount_borrowed
+    debt = form2.loans
     result = assets - debt
     return render_template('view_networth.html', result=result)
 
