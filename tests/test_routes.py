@@ -32,7 +32,7 @@ class TestViews(TestBase):
 
     def test_add_debt(self):
         response = self.client.get(url_for('add_debt'))
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 200)
 
     def test_update_profile(self):
         response = self.client.get(url_for('update_profile'))
