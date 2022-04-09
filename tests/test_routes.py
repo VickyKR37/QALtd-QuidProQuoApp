@@ -14,10 +14,14 @@ class TestBase(TestCase):
     def setUp(self):
         db.create_all()
 
-        test_User = Users(user_name="Vicky_Jones", password="Groovy123", property=1000000, cash=500000, investments=200000)
+        test_user = Users(user_name="Vicky_Jones", password="Groovy123", property=1000000, cash=500000, investments=200000)
+
+        db.session.add(test_user)
+        db.session.commit()
 
     def tearDown(self):
-        pass
+        db.session.remove()
+        db.drop_all()
 
     
 class TestViews(TestBase):
