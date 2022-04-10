@@ -31,9 +31,11 @@ def add_debt():
         added_debt = Loans(user_id=form.user_id.data, lender_id=form.lender_id.data, amount_borrowed=form.amount_borrowed.data)
         db.session.add(added_debt)
         db.session.commit()
-        return render_template('index.html', message="Details of debt added!")
+        flash("Details of debt added!")
+        return render_template('index.html')
     else:
-        return render_template('add_debt.html', message="Try again", form=form)
+        flash("Try again")
+        return render_template('add_debt.html', form=form)
 
 
 
@@ -50,8 +52,10 @@ def update_profile(user_id):
             if form.investments.data: 
                 updated_profile.investments = form.investments.data
             db.session.commit()
-            return render_template('index.html', message="You updated the value of your assets!")
+            flash("You updated the value of your assets!")
+            return render_template('index.html')
     else:
+        flash("Try again")
         return render_template('update_profile.html', form=form)
 
 
@@ -68,8 +72,10 @@ def update_debt(user_id):
             if form.amount_borrowed.data:
                 updated_debt.amount_borrowed = form.amount_borrowed.data
             db.session.commit()
-            return render_template('index.html', message="Details of debt updated!")
+            flash("Details of debt updated!")
+            return render_template('index.html')
     else:
+        flash("Try again")
         return render_template('update_debt.html', form=form)
 
 
@@ -90,8 +96,10 @@ def delete_profile(user_id):
     if deleted_profile:
         db.session.delete(deleted_profile)
         db.session.commit()
+        flash("Profile deleted")
         return redirect('/home')
     else:
+        flash("Try again")
         return redirect('/home')
 
 
