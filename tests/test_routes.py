@@ -28,7 +28,7 @@ class TestBase(TestCase):
         db.session.remove()
         db.drop_all()
 
-    
+# #testing the URL endpoints for all routes:    
 class TestViews(TestBase):
 
     def test_home_get(self):
@@ -60,8 +60,17 @@ class TestViews(TestBase):
         response = self.client.get(url_for('delete_profile', user_id = 1))
         self.assertEqual(response.status_code, 302)
 
+    def test_post_req(self):
+        response = self.client.post(url_for('add_profile'), data = dict(user_name="Vicky_Rai", password="Groovy123", property=1000000, cash=500000, investments=200000))
+        self.assertIn(b'Create', response.data)
 
+
+# Integration testing (testing the database)
 class TestData(TestBase):
+
+    def check_name(self):
+        response = test_user.query.first()
+        self.assertIn("Vicky_Jones", response.data.decode)
 
     
 
