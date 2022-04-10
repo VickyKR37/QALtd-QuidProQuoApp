@@ -1,7 +1,7 @@
 from application.models import Users, Loans
 from flask_testing import TestCase
 from application import app, db
-from flask import url_for
+from flask import url_for, flash
 from flask_testing import LiveServerTestCase
 
 class TestBase(TestCase):
@@ -61,17 +61,22 @@ class TestViews(TestBase):
         self.assertEqual(response.status_code, 302)
 
     def test_post_req(self):
-        response = self.client.post(url_for('add_profile'), data = dict(user_name="Vicky_Rai", password="Groovy123", property=1000000, cash=500000, investments=200000))
+        response = self.client.post(url_for('add_profile'), 
+        data = dict(user_name="Vicky_Rai", password="Groovy123", property=1000000, cash=500000, investments=200000))
         self.assertIn(b'Create', response.data)
+
+    def test_flash(self):
+        response = self.client.post(url_for('add_debt'), data=flash("Try again"))
+        self.assertIn(b"Try again", response.data)
 
 
 # Integration testing (testing the database)
 class TestData(TestBase):
 
-    def check_name(self):
-        response = test_user.query.first()
-        self.assertIn("Vicky_Jones", response.data.decode)
+    def test_add_debt2(self):
+        response = self.client.post(
+            url_for('add_debt', user_id=1, lender_id="Halifax", amount_borrowed=1000),
+            data={"user_id": 1, "lender_id":"Halifax", "amount_borrowed":1000}
+        )
+        assert "Halifax" in response.data.decode()
 
-    
-
- 
