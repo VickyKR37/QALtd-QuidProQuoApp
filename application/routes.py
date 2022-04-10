@@ -1,6 +1,7 @@
 from application import app, db
 from application.models import Users, Loans, AddProfile, AddDebtDetails
-from flask import render_template, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request
+
 
 @app.route('/')
 @app.route('/home')
@@ -16,9 +17,11 @@ def add_profile():
         property=form.property.data, cash=form.cash.data, investments=form.investments.data)
         db.session.add(new_profile)
         db.session.commit()
-        return render_template('index.html', message="You have created your profile!")
+        flash("You have created your profile!")
+        return render_template('index.html') 
     else:
-        return render_template('add_profile.html', message="Try again", form=form)
+        flash("Try again")
+        return render_template('add_profile.html', form=form)
 
 
 @app.route('/add_debt', methods=[ 'GET', 'POST'])
