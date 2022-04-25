@@ -146,10 +146,13 @@ The board was designed to move from left to right:
 ![risk assessment table](https://github.com/VickyKR37/QALtd-QuidProQuoApp/blob/main/git-images/risk-assessment.png)
 
 **Testing Reports**
+The following image shows the coverage of the URL points. This means that Pytest tests that the routes go where they are intended to: 
 ![URL End Points Coverage](https://github.com/VickyKR37/QALtd-QuidProQuoApp/blob/main/git-images/URL-Endpoints_Cov.png)
 
+The following image shows the results of a report showing how the components integrated logically and successfully:
 ![Coverage Report After Integration Testing](https://github.com/VickyKR37/QALtd-QuidProQuoApp/blob/main/git-images/cov-report-after-integr-test.png)
 
+The following image is of a report showing which lines of code in each file were not tested making it easy for me to test those missing lines of code:
 ![Missing In Coverage Report](https://github.com/VickyKR37/QALtd-QuidProQuoApp/blob/main/git-images/missing-in-cov.png)
 
 
