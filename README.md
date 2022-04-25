@@ -177,4 +177,4 @@ No licence.
 
 **Acknowledgments**
 
-I used the following project on GitHub for reference: [https://github.com/TheEarlOfGray/EliteTracker](https://github.com/TheEarlOfGray/EliteTracker)
+I used the following project on GitHub for reference: [https://github.com/TheEarlOfGray/EliteTracker](https://github.com/TheEarlOfGray/EliteTracker) and the following README.md: https://github.com/htr-volker/individual-project-example/blob/master/README.md
