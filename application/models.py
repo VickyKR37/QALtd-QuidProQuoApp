@@ -11,7 +11,7 @@ bcrypt = Bcrypt(app)
 class Users(db.Model):
     user_id = db.Column(db.Integer, primary_key=True)
     user_name = db.Column(db.String(15), unique=True)
-    loans = db.relationship('Loans', backref='user')
+    loans = db.relationship('Loans', backref='user', uselist=False)
     password = db.Column(db.String(15), nullable=False)
     property = db.Column(db.Integer)
     cash = db.Column(db.Integer)
@@ -30,12 +30,12 @@ class Loans(db.Model):
         return 'Choose {}'.format(self.lender_id)
 
 class AddProfile(FlaskForm):
-    user_id = IntegerField('User ID')
     user_name = StringField('User Name')
     password = StringField('Password')
     property = IntegerField('Value of Property')
     cash = IntegerField('Value of Cash')
     investments = IntegerField('Value of Investmensts')
+    loans = IntegerField('Loan amount')
     submit = SubmitField('Submit')
 
 
