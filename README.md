@@ -149,7 +149,7 @@ The board was designed to move from left to right:
 The following image shows the coverage of the URL points. This means that Pytest tests that the routes go where they are intended to: 
 ![URL End Points Coverage](https://github.com/VickyKR37/QALtd-QuidProQuoApp/blob/main/git-images/URL-Endpoints_Cov.png)
 
-The following image shows the results of a report showing how the components integrated logically and successfully:
+The following image shows the results of a report showing how the components integrated logically and successfully. I only tested app.py so that the main part of the app was all that was tested and nothing unnecessary was tested, saving time and energy. The app returned quite a high passing percentage meaning that the app was working well:
 ![Coverage Report After Integration Testing](https://github.com/VickyKR37/QALtd-QuidProQuoApp/blob/main/git-images/cov-report-after-integr-test.png)
 
 The following image is of a report showing which lines of code in each file were not tested making it easy for me to test those missing lines of code:
